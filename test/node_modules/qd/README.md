@@ -1,0 +1,2 @@
+# qd
+DOM Helper functions
