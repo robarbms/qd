@@ -2,7 +2,7 @@
 const qwickDom = require('../src/qwick-dom');
 
 it('should create a basic Element', () => {
-    const basicElement = qwickDom.dom({tagName: "div"});
+    const basicElement = qwickDom.create({tagName: "div"});
 
     expect(basicElement.outerHTML).toMatch("<div></div>");
 });
@@ -12,7 +12,7 @@ it('should add basic attributes', () => {
     const id = "test_elm";
     const className = "test_class_name";
 
-    const element = qwickDom.dom({
+    const element = qwickDom.create({
         id: id,
         className: className
     });
@@ -23,7 +23,7 @@ it('should add basic attributes', () => {
 
 it('should create element with a style applied', () => {
     const color = "rgb(255, 0, 0)";
-    const element = qwickDom.dom({
+    const element = qwickDom.create({
         styles: { color }
     });
 
@@ -34,7 +34,7 @@ it('should create element with multiple styles applied', () => {
     const color = "rgb(255, 0, 0)";
     const fontFamily = "Arial";
     const fontWeight = "bold";
-    const element = qwickDom.dom({
+    const element = qwickDom.create({
         styles: { 
             color,
             fontFamily,
@@ -49,12 +49,12 @@ it('should create element with multiple styles applied', () => {
 
 it('should create an element that attaches to another element', () => {
     const element1_id = "element1";
-    const element1 = qwickDom.dom({
+    const element1 = qwickDom.create({
         tagName: "div",
         id: element1_id
     });
 
-    const element2 = qwickDom.dom({
+    const element2 = qwickDom.create({
         tagName: "div",
         id: "element2",
         parent: element1
@@ -64,16 +64,16 @@ it('should create an element that attaches to another element', () => {
 });
 
 it('should attach children during creation', () => {
-    const elm1 = qwickDom.dom({
+    const elm1 = qwickDom.create({
         id: "elm1"
     });
-    const elm2 = qwickDom.dom({
+    const elm2 = qwickDom.create({
         id: "elm2"
     });
-    const elm3 = qwickDom.dom({
+    const elm3 = qwickDom.create({
         id: "elm3"
     });
-    const parentElement = qwickDom.dom({
+    const parentElement = qwickDom.create({
         id: "parent-elm",
         children: [ elm1, elm2, elm3 ],
     });
@@ -86,7 +86,7 @@ it('should attach children during creation', () => {
 
 it('should recursively create children nodes', () => {
     const body = document.querySelector("body");
-    const parentElement = qwickDom.dom({
+    const parentElement = qwickDom.create({
         id: "parent",
         children: [
             { id: "elm1" },
